@@ -1,22 +1,22 @@
 import User from '../models/userModel';
 
-export const createUser = async (nombre: string, email: string) => {
+export const createUserService = async (nombre: string, email: string) => {
     const user = await User.create({ nombre, email });
     return user;
 }
 
-export const getUsers = async () => {
+export const getUsersService = async () => {
     const users = await User.findAll();
     return users;
 
 }
 
-export const getUserById = async(id: number) => {
+export const getUserByIdService = async(id: number) => {
     const userById = await User.findByPk(id);
     return userById;
 }
 
-export const updateUser = async(id: number, nombre: string, email: string) => {
+export const updateUserService = async(id: number, nombre: string, email: string) => {
     const user = await User.findByPk(id);
     if(user){
         user.nombre = nombre;
@@ -27,7 +27,7 @@ export const updateUser = async(id: number, nombre: string, email: string) => {
     return null;
 }
 
-export const deleteUser = async (id: number) => {
+export const deleteUserService = async (id: number) => {
     const user = await User.findByPk(id);
     if(user){
         user.destroy();
